@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="floating-buttons-container">
-      <decision-tree />
+      <!-- <decision-tree /> -->
       <router-link
         v-show="
           $route.fullPath === '/create-wallet' ||
@@ -9,7 +9,7 @@
         "
         to="/getting-started"
       >
-        <user-reminder-button />
+        <!-- <user-reminder-button /> -->
       </router-link>
     </div>
     <cx-header v-if="isMewCx" />
@@ -70,7 +70,7 @@
               </router-link>
               <div class="top-menu">
                 <b-nav>
-                  <b-nav-item
+                  <!-- <b-nav-item
                     href="https://ccswap.myetherwallet.com/#/"
                     target="_blank"
                     class="buy-eth"
@@ -82,7 +82,7 @@
                       src="@/assets/images/icons/buy-eth.svg"
                     />
                     {{ $t('common.buy-eth') }}
-                  </b-nav-item>
+                  </b-nav-item> -->
 
                   <b-nav-item-dropdown
                     v-if="!isMewCx"
@@ -238,7 +238,7 @@ import IssueLogModal from '@/components/IssueLogModal';
 import BigNumber from 'bignumber.js';
 import MobileMenu from './components/MobileMenu';
 import DisconnectedModal from '@/components/DisconnectedModal';
-import DecisionTree from '@/components/DecisionTree';
+// import DecisionTree from '@/components/DecisionTree';
 import CxHeader from '@/layouts/ExtensionBrowserAction/components/CxHeader';
 import supportedLang from './supportedLang';
 import WelcomeModal from '@/components/WelcomeModal';
@@ -258,7 +258,7 @@ export default {
     'user-reminder-button': UserReminderButton,
     'mobile-menu': MobileMenu,
     'disconnected-modal': DisconnectedModal,
-    'decision-tree': DecisionTree,
+    // 'decision-tree': DecisionTree,
     'cx-header': CxHeader,
     'welcome-modal': WelcomeModal
   },

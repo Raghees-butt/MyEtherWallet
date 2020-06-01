@@ -1,6 +1,6 @@
 <template>
   <div class="your-password">
-    <tutorial-modal ref="tutorialModal" :skip="skip" />
+    <!-- <tutorial-modal ref="tutorialModal" :skip="skip" /> -->
     <scan-to-download-modal ref="scanToDownloadModal" />
     <ipad-modal ref="ipadModal" />
     <by-json-page-title />
@@ -9,12 +9,11 @@
         <div v-show="!byJson && !byMnemonic" class="nav-tab-user-input-box">
           <b-tabs class="x100">
             <div v-if="showProgressBar && false" class="progress-bar" />
-            <b-tab
+            <!-- <b-tab
               :title="this.$t('common.mew-wallet.string')"
               class="mew-connect-block"
               active
-              @click="showProgressBar = false"
-            >
+              @click="showProgressBar = false" >
               <div class="tab-content-block">
                 <div class="title-block">
                   <div class="title-popover">
@@ -71,7 +70,7 @@
               <div class="bottom-image">
                 <img alt src="@/assets/images/icons/snippet-mew-wallet.png" />
               </div>
-            </b-tab>
+            </b-tab> -->
             <b-tab
               :title="$t('createWallet.keystore.title-tab')"
               @click="showProgressBar = true"
@@ -122,7 +121,7 @@
         <by-mnemonic-container v-if="!byJson && byMnemonic" />
       </div>
     </div>
-    <by-json-page-footer />
+    <!-- <by-json-page-footer /> -->
   </div>
 </template>
 
@@ -130,13 +129,13 @@
 import WarningMessage from '@/components/WarningMessage';
 import ByJsonFileContainer from './containers/ByJsonFileContainer';
 import ByMnemonicContainer from './containers/ByMnemonicContainer';
-import TutorialModal from './components/TutorialModal';
+// import TutorialModal from './components/TutorialModal';
 import ScanToDownloadModal from './components/ScanToDownloadModal';
 import CreateWalletInput from './components/CreateWalletInput';
 import CreateWalletInputFooter from './components/CreateWalletInputFooter';
-import PageFooter from './components/PageFooter';
+// import PageFooter from './components/PageFooter';
 import PageTitle from './components/PageTitle';
-import store from 'store';
+// import store from 'store';
 import { Misc } from '@/helpers';
 import IpadModal from '@/components/IpadModal';
 import platform from 'platform';
@@ -145,12 +144,12 @@ export default {
   components: {
     'by-json-file-container': ByJsonFileContainer,
     'by-mnemonic-container': ByMnemonicContainer,
-    'tutorial-modal': TutorialModal,
+    // 'tutorial-modal': TutorialModal,
     'scan-to-download-modal': ScanToDownloadModal,
     'by-json-page-title': PageTitle,
     'create-wallet-input': CreateWalletInput,
     'create-wallet-input-footer': CreateWalletInputFooter,
-    'by-json-page-footer': PageFooter,
+    // 'by-json-page-footer': PageFooter,
     'ipad-modal': IpadModal,
     'warning-message': WarningMessage
   },
@@ -173,14 +172,14 @@ export default {
       platform.product !== null
         ? platform.product.toLowerCase() !== 'ipad'
         : true;
-    const skipTutorial = store.get('skipTutorial');
-    if (
-      skipTutorial === undefined ||
-      skipTutorial === null ||
-      skipTutorial === false
-    ) {
-      this.$refs.tutorialModal.$refs.tutorial.show();
-    }
+    // const skipTutorial = store.get('skipTutorial');
+    // if (
+    //   skipTutorial === undefined ||
+    //   skipTutorial === null ||
+    //   skipTutorial === false
+    // ) {
+    //   this.$refs.tutorialModal.$refs.tutorial.show();
+    // }
   },
   methods: {
     switcher(by) {
@@ -196,10 +195,10 @@ export default {
         this.byMnemonic = false;
       }
     },
-    skip() {
-      store.set('skipTutorial', true);
-      this.$refs.tutorialModal.$refs.tutorial.hide();
-    },
+    // skip() {
+    //   store.set('skipTutorial', true);
+    //   this.$refs.tutorialModal.$refs.tutorial.hide();
+    // },
     scanToDownloadModalOpen() {
       this.$refs.scanToDownloadModal.$refs.scantodownload.show();
     },

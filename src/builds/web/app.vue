@@ -7,34 +7,34 @@
         !$route.fullPath.includes('/dapp-submission')
       "
     />
-    <welcome-modal ref="welcome" />
+    <!-- <welcome-modal ref="welcome" /> -->
     <router-view />
-    <footer-container />
-    <wallet-launched-footer-banner />
-    <confirmation-container v-if="wallet !== null" />
+    <!-- <footer-container /> -->
+    <!-- <wallet-launched-footer-banner /> -->
+    <!-- <confirmation-container v-if="wallet !== null" /> -->
   </div>
 </template>
 
 <script>
-import FooterContainer from '@/containers/FooterContainer';
+// import FooterContainer from '@/containers/FooterContainer';
 import HeaderContainer from '@/containers/HeaderContainer';
-import ConfirmationContainer from '@/containers/ConfirmationContainer';
-import WelcomeModal from '@/components/WelcomeModal';
-import store from 'store';
+// import ConfirmationContainer from '@/containers/ConfirmationContainer';
+// import WelcomeModal from '@/components/WelcomeModal';
+// import store from 'store';
 import { mapState, mapActions } from 'vuex';
 import { Toast } from '@/helpers';
 import LogoutWarningModal from '@/components/LogoutWarningModal';
-import WalletLaunchedBanner from '@/components/WalletLaunchedBanner';
+// import WalletLaunchedBanner from '@/components/WalletLaunchedBanner';
 
 export default {
   name: 'App',
   components: {
     'header-container': HeaderContainer,
-    'footer-container': FooterContainer,
-    'confirmation-container': ConfirmationContainer,
-    'logout-warning-modal': LogoutWarningModal,
-    'welcome-modal': WelcomeModal,
-    'wallet-launched-footer-banner': WalletLaunchedBanner
+    // 'footer-container': FooterContainer,
+    // 'confirmation-container': ConfirmationContainer,
+    'logout-warning-modal': LogoutWarningModal
+    // 'welcome-modal': WelcomeModal
+    // 'wallet-launched-footer-banner': WalletLaunchedBanner
   },
   computed: {
     ...mapState('main', ['wallet', 'online'])
@@ -70,13 +70,13 @@ export default {
   mounted() {
     this.checkIfOnline(navigator.onLine);
 
-    if (!store.get('notFirstTimeVisit') && this.$route.fullPath === '/') {
-      this.$refs.welcome.$refs.welcome.show();
-    }
+    // if (!store.get('notFirstTimeVisit') && this.$route.fullPath === '/') {
+    //   this.$refs.welcome.$refs.welcome.show();
+    // }
 
-    this.$refs.welcome.$refs.welcome.$on('hidden', () => {
-      store.set('notFirstTimeVisit', true);
-    });
+    // this.$refs.welcome.$refs.welcome.$on('hidden', () => {
+    //   store.set('notFirstTimeVisit', true);
+    // });
 
     this.$refs.logoutWarningModal.$refs.logoutWarningModal.$on('hidden', () => {
       window.scrollTo(0, 0);
