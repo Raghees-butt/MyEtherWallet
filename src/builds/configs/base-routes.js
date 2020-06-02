@@ -1,20 +1,20 @@
 const ConvertUnits = () => import('@/layouts/ConvertUnits');
-const TeamLayout = () => import('@/layouts/TeamLayout');
-const SecurityPolicy = () => import('@/layouts/SecurityPolicy');
-const PrivacyPolicyLayout = () => import('@/layouts/PrivacyPolicyLayout');
-const TermsOfService = () => import('@/layouts/TermsOfService');
+// const TeamLayout = () => import('@/layouts/TeamLayout');
+// const SecurityPolicy = () => import('@/layouts/SecurityPolicy');
+// const PrivacyPolicyLayout = () => import('@/layouts/PrivacyPolicyLayout');
+// const TermsOfService = () => import('@/layouts/TermsOfService');
 const InterfaceLayout = () => import('@/layouts/InterfaceLayout');
 const NotFoundLayout = () => import('@/layouts/NotFoundLayout');
 const GettingStarted = () => import('@/layouts/GettingStarted');
 const SendOfflineHelper = () => import('@/layouts/SendOfflineHelper');
-const VerifyMessageLayout = () => import('@/layouts/VerifyMessageLayout');
-const DappSubmission = () => import('@/layouts/DappSubmissionLayout');
-const AboutYourDapp = () =>
-  import('@/layouts/DappSubmissionLayout/containers/AboutYourDappContainer');
-const AboutYourTeam = () =>
-  import('@/layouts/DappSubmissionLayout/containers/AboutYourTeamContainer');
-const DappSummary = () =>
-  import('@/layouts/DappSubmissionLayout/containers/SummaryContainer');
+// const VerifyMessageLayout = () => import('@/layouts/VerifyMessageLayout');
+// const DappSubmission = () => import('@/layouts/DappSubmissionLayout');
+// const AboutYourDapp = () =>
+//   import('@/layouts/DappSubmissionLayout/containers/AboutYourDappContainer');
+// const AboutYourTeam = () =>
+//   import('@/layouts/DappSubmissionLayout/containers/AboutYourTeamContainer');
+// const DappSummary = () =>
+//   import('@/layouts/DappSubmissionLayout/containers/SummaryContainer');
 
 const DappsContainer = () =>
   import('@/layouts/InterfaceLayout/containers/DappsContainer');
@@ -34,7 +34,7 @@ const SignMessageContainer = () =>
   import('@/layouts/InterfaceLayout/containers/SignMessageContainer');
 const VerifyMessageContainer = () =>
   import('@/layouts/InterfaceLayout/containers/VerifyMessageContainer');
-const HardwaresLayout = () => import('@/layouts/HardwaresLayout');
+// const HardwaresLayout = () => import('@/layouts/HardwaresLayout');
 const PhishingCatcherLayout = () => import('@/layouts/PhishingCatcherLayout');
 const DashboardContainer = () =>
   import('@/layouts/InterfaceLayout/containers/DashboardContainer');
@@ -42,37 +42,37 @@ const DashboardContainer = () =>
 import dapps from '@/dapps/routes';
 
 const router = [
-  {
-    path: '/team',
-    name: 'TeamLayout',
-    component: TeamLayout,
-    meta: { requiresAuth: false }
-  },
-  {
-    path: '/security-policy',
-    name: 'SecurityPolicy',
-    component: SecurityPolicy,
-    meta: { requiresAuth: false }
-  },
-  {
-    path: '/privacy-policy',
-    name: 'PrivacyPolicyLayout',
-    component: PrivacyPolicyLayout,
-    meta: { requiresAuth: false }
-  },
-  {
-    // temporary until mewconnect fixes the path
-    path: '/privacy-policy.html',
-    name: 'PrivacyPolicyLayoutHtml',
-    component: PrivacyPolicyLayout,
-    meta: { requiresAuth: false }
-  },
-  {
-    path: '/terms-of-service',
-    name: 'TermsOfService',
-    component: TermsOfService,
-    meta: { requiresAuth: false }
-  },
+  // {
+  //   path: '/team',
+  //   name: 'TeamLayout',
+  //   component: TeamLayout,
+  //   meta: { requiresAuth: false }
+  // },
+  // {
+  //   path: '/security-policy',
+  //   name: 'SecurityPolicy',
+  //   component: SecurityPolicy,
+  //   meta: { requiresAuth: false }
+  // },
+  // {
+  //   path: '/privacy-policy',
+  //   name: 'PrivacyPolicyLayout',
+  //   component: PrivacyPolicyLayout,
+  //   meta: { requiresAuth: false }
+  // },
+  // {
+  //   // temporary until mewconnect fixes the path
+  //   path: '/privacy-policy.html',
+  //   name: 'PrivacyPolicyLayoutHtml',
+  //   component: PrivacyPolicyLayout,
+  //   meta: { requiresAuth: false }
+  // },
+  // {
+  //   path: '/terms-of-service',
+  //   name: 'TermsOfService',
+  //   component: TermsOfService,
+  //   meta: { requiresAuth: false }
+  // },
   {
     path: '/phishing-catcher',
     name: 'PhishingCatcherLayout',
@@ -91,54 +91,54 @@ const router = [
     component: GettingStarted,
     meta: { requiresAuth: false }
   },
-  {
-    path: '/hardware-wallet-affiliates',
-    name: 'HardwaresLayout',
-    component: HardwaresLayout,
-    meta: { requiresAuth: false }
-  },
+  // {
+  //   path: '/hardware-wallet-affiliates',
+  //   name: 'HardwaresLayout',
+  //   component: HardwaresLayout,
+  //   meta: { requiresAuth: false }
+  // },
   {
     path: '/send-offline-helper',
     name: 'SendOfflineHelper',
     component: SendOfflineHelper,
     meta: { requiresAuth: false }
   },
-  {
-    path: '/dapp-submission',
-    component: DappSubmission,
-    children: [
-      {
-        path: '',
-        name: 'DappSubmission',
-        component: AboutYourDapp,
-        meta: { requiresAuth: false }
-      },
-      {
-        path: 'about-your-dapp',
-        name: 'AboutYourDapp',
-        component: AboutYourDapp,
-        meta: { requiresAuth: false }
-      },
-      {
-        path: 'about-your-team',
-        name: 'AboutYourTeam',
-        component: AboutYourTeam,
-        meta: { requiresAuth: false }
-      },
-      {
-        path: 'dapp-summary',
-        name: 'DappSummary',
-        component: DappSummary,
-        meta: { requiresAuth: false }
-      }
-    ]
-  },
-  {
-    path: '/verify-message',
-    name: 'VerifyMessageLayout',
-    component: VerifyMessageLayout,
-    meta: { requiresAuth: false }
-  },
+  // {
+  //   path: '/dapp-submission',
+  //   component: DappSubmission,
+  //   children: [
+  //     {
+  //       path: '',
+  //       name: 'DappSubmission',
+  //       component: AboutYourDapp,
+  //       meta: { requiresAuth: false }
+  //     },
+  //     {
+  //       path: 'about-your-dapp',
+  //       name: 'AboutYourDapp',
+  //       component: AboutYourDapp,
+  //       meta: { requiresAuth: false }
+  //     },
+  //     {
+  //       path: 'about-your-team',
+  //       name: 'AboutYourTeam',
+  //       component: AboutYourTeam,
+  //       meta: { requiresAuth: false }
+  //     },
+  //     {
+  //       path: 'dapp-summary',
+  //       name: 'DappSummary',
+  //       component: DappSummary,
+  //       meta: { requiresAuth: false }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/verify-message',
+  //   name: 'VerifyMessageLayout',
+  //   component: VerifyMessageLayout,
+  //   meta: { requiresAuth: false }
+  // },
   {
     path: '*',
     name: '404',

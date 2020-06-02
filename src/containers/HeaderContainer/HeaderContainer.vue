@@ -231,7 +231,7 @@ import store from 'store';
 import { Misc, Toast } from '@/helpers';
 import Blockie from '@/components/Blockie';
 import NotificationsContainer from '@/containers/NotificationsContainer';
-import UserReminderButton from '@/components/UserReminderButton';
+// import UserReminderButton from '@/components/UserReminderButton';
 import SettingsModal from '@/components/SettingsModal';
 import LogoutModal from '@/components/LogoutModal';
 import IssueLogModal from '@/components/IssueLogModal';
@@ -255,7 +255,7 @@ export default {
     'settings-modal': SettingsModal,
     'logout-modal': LogoutModal,
     'issue-log-modal': IssueLogModal,
-    'user-reminder-button': UserReminderButton,
+    // 'user-reminder-button': UserReminderButton,
     'mobile-menu': MobileMenu,
     'disconnected-modal': DisconnectedModal,
     // 'decision-tree': DecisionTree,
@@ -348,6 +348,8 @@ export default {
     };
 
     this.$eventHub.$on('issueModal', (error, resolve) => {
+      console.log('error ', error);
+
       let errorPop = store.get('errorPop') || 0;
       errorPop += 1;
       store.set('errorPop', errorPop);

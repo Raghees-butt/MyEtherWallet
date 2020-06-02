@@ -146,6 +146,7 @@ Sentry.init({
   requestBodies: 'small',
   release: NODE_ENV === 'production' ? VERSION : 'develop',
   beforeSend(event) {
+    console.log('event ', event);
     for (const exceptionIdx in event.exception.values) {
       if (globalErrorHandler(event.exception.values[exceptionIdx])) {
         event.exception.values.splice(exceptionIdx, 1);

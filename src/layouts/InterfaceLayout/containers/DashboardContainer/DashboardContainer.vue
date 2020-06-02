@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="container--card block--swap">
+      <!-- <div class="container--card block--swap">
         <div class="flex--row--align-center title">
           <h4>{{ $t('common.swap') }}</h4>
           <button
@@ -58,10 +58,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
-    <div class="container--card bottom--buttons">
+    <!-- <div class="container--card bottom--buttons">
       <div class="block--dapps">
         <div class="flex--row--align-center title">
           <h4>{{ $t('common.dapps') }}</h4>
@@ -87,29 +87,29 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import tabsConfig from '../../components/InterfaceSideMenu/InterfaceSideMenu.config';
-import DappButtons from '../../components/DappButtons';
-import dapps from '@/dapps';
+// import DappButtons from '../../components/DappButtons';
+// import dapps from '@/dapps';
 import ButtonNftManager from './components/ButtonNftManager';
 import ButtonSendTx from './components/ButtonSendTx';
-import { hasIcon } from '@/partners';
+// import { hasIcon } from '@/partners';
 
-import { SwapProviders, providers } from '@/partners';
-import BigNumber from 'bignumber.js';
+// import { SwapProviders, providers } from '@/partners';
+// import BigNumber from 'bignumber.js';
 
-const toBigNumber = num => {
-  return new BigNumber(num);
-};
+// const toBigNumber = num => {
+//   return new BigNumber(num);
+// };
 
 export default {
   components: {
-    'dapp-buttons': DappButtons,
+    // 'dapp-buttons': DappButtons,
     'button-nft-manager': ButtonNftManager,
     'button-send-tx': ButtonSendTx
   },
@@ -150,18 +150,18 @@ export default {
         { from: 'BAT', to: 'ETH', amt: 1, rate: 0 },
         { from: 'ETH', to: 'DAI', amt: 1, rate: 0 }
       ],
-      swap: new SwapProviders(
-        providers,
-        {
-          network: this.$store.state.main.network.type.name,
-          web3: this.$store.state.main.web3,
-          getRateForUnit: false
-        },
-        {
-          tokensWithBalance: this.tokensWithBalance,
-          online: this.$store.state.main.online
-        }
-      ),
+      // swap: new SwapProviders(
+      //   providers,
+      //   {
+      //     network: this.$store.state.main.network.type.name,
+      //     web3: this.$store.state.main.web3,
+      //     getRateForUnit: false
+      //   },
+      //   {
+      //     tokensWithBalance: this.tokensWithBalance,
+      //     online: this.$store.state.main.online
+      //   }
+      // ),
       updatingRates: false,
       suppliedFrom: {
         symbol: 'ETH',
@@ -177,47 +177,47 @@ export default {
 
   computed: {
     ...mapState('main', ['account', 'web3', 'network', 'online']),
-    sortedObject() {
-      const arrayedDapp = [];
-      const actualReturnedDapp = [];
-      Object.keys(dapps).forEach(dapp => {
-        if (dapp === 'manageEns' || dapp === 'maker')
-          actualReturnedDapp.push(dapps[dapp]);
-        arrayedDapp.push(dapps[dapp]);
-      });
-      const newestDapp = arrayedDapp.sort((a, b) => {
-        return new Date(b.releaseDate) - new Date(a.releaseDate);
-      })[0];
-      actualReturnedDapp.push(newestDapp);
-      return actualReturnedDapp;
-    },
+    // sortedObject() {
+    //   const arrayedDapp = [];
+    //   const actualReturnedDapp = [];
+    //   Object.keys(dapps).forEach(dapp => {
+    //     if (dapp === 'manageEns' || dapp === 'maker')
+    //       actualReturnedDapp.push(dapps[dapp]);
+    //     arrayedDapp.push(dapps[dapp]);
+    //   });
+    //   const newestDapp = arrayedDapp.sort((a, b) => {
+    //     return new Date(b.releaseDate) - new Date(a.releaseDate);
+    //   })[0];
+    //   actualReturnedDapp.push(newestDapp);
+    //   return actualReturnedDapp;
+    // },
     isOnlineAndEth() {
       return this.online && this.network.type.name === 'ETH';
     }
   },
   watch: {
-    ['swap.haveProviderRates']() {
-      if (this.isOnlineAndEth) {
-        this.haveProviderRates = this.swap.haveProviderRates;
-        this.setupSwap();
-      }
-    },
-    network() {
-      setTimeout(() => {
-        this.swap = new SwapProviders(
-          providers,
-          {
-            network: this.network.type.name,
-            web3: this.web3,
-            getRateForUnit: false
-          },
-          {
-            tokensWithBalance: this.tokensWithBalance,
-            online: this.$store.state.main.online
-          }
-        );
-      }, 500);
-    }
+    // ['swap.haveProviderRates']() {
+    //   if (this.isOnlineAndEth) {
+    //     this.haveProviderRates = this.swap.haveProviderRates;
+    //     this.setupSwap();
+    //   }
+    // },
+    // network() {
+    //   setTimeout(() => {
+    //     this.swap = new SwapProviders(
+    //       providers,
+    //       {
+    //         network: this.network.type.name,
+    //         web3: this.web3,
+    //         getRateForUnit: false
+    //       },
+    //       {
+    //         tokensWithBalance: this.tokensWithBalance,
+    //         online: this.$store.state.main.online
+    //       }
+    //     );
+    //   }, 500);
+    // }
   },
   mounted() {
     if (this.online && this.network.type.name === 'ETH') {
@@ -227,20 +227,20 @@ export default {
     }
   },
   methods: {
-    iconFetcher(currency) {
-      let icon;
-      try {
-        // eslint-disable-next-line
-        icon = require(`@/assets/images/currency/coins/AllImages/${currency}.svg`);
-      } catch (e) {
-        // eslint-disable-next-line
-        return require(`@/assets/images/icons/web-solution.svg`);
-      }
-      return icon;
-    },
-    getIcon(currency) {
-      return hasIcon(currency);
-    },
+    // iconFetcher(currency) {
+    //   let icon;
+    //   try {
+    //     // eslint-disable-next-line
+    //     icon = require(`@/assets/images/currency/coins/AllImages/${currency}.svg`);
+    //   } catch (e) {
+    //     // eslint-disable-next-line
+    //     return require(`@/assets/images/icons/web-solution.svg`);
+    //   }
+    //   return icon;
+    // },
+    // getIcon(currency) {
+    //   return hasIcon(currency);
+    // },
     goTo(page, disabled) {
       if (disabled) return;
       let childIndex = -1;
@@ -265,38 +265,38 @@ export default {
           this.$router.push({ path: pageInfo.routes[0] });
         }
       }
-    },
-    async setupSwap() {
-      if (this.isOnlineAndEth) {
-        for (let i = 0; i < this.swapPairs.length; i++) {
-          const swappers = await this.swap.standAloneRateEstimate(
-            this.swapPairs[i].from,
-            this.swapPairs[i].to,
-            this.swapPairs[i].amt
-          );
-          if (this.isOnlineAndEth) {
-            if (swappers) {
-              this.$set(
-                this.swapPairs[i],
-                'rate',
-                toBigNumber(swappers[0].rate).toFixed(4)
-              );
-            }
-          }
-        }
-      }
-    },
-    showSwapWidget(vals) {
-      if (this.isOnlineAndEth) {
-        this.$eventHub.$emit(
-          'showSwapWidget',
-          this.account.address,
-          vals.from,
-          vals.to,
-          vals.amt
-        );
-      }
     }
+    // async setupSwap() {
+    //   if (this.isOnlineAndEth) {
+    //     for (let i = 0; i < this.swapPairs.length; i++) {
+    //       const swappers = await this.swap.standAloneRateEstimate(
+    //         this.swapPairs[i].from,
+    //         this.swapPairs[i].to,
+    //         this.swapPairs[i].amt
+    //       );
+    //       if (this.isOnlineAndEth) {
+    //         if (swappers) {
+    //           this.$set(
+    //             this.swapPairs[i],
+    //             'rate',
+    //             toBigNumber(swappers[0].rate).toFixed(4)
+    //           );
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    // showSwapWidget(vals) {
+    //   if (this.isOnlineAndEth) {
+    //     this.$eventHub.$emit(
+    //       'showSwapWidget',
+    //       this.account.address,
+    //       vals.from,
+    //       vals.to,
+    //       vals.amt
+    //     );
+    //   }
+    // }
   }
 };
 </script>

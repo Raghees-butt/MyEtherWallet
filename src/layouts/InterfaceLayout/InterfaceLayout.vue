@@ -5,42 +5,42 @@
     <!-- Modals ******************************************************** -->
     <wallet-password-modal />
     <enter-pin-number-modal />
-    <ledger-app-modal
+    <!-- <ledger-app-modal
       ref="ledgerAppModal"
       :networks="Networks"
       @hardwareWalletOpen="toggleNetworkAddrModal"
-    />
-    <mnemonic-modal
+    /> -->
+    <!-- <mnemonic-modal
       ref="mnemonicPhraseModal"
       :hardware-wallet-open="toggleNetworkAddrModal"
-    />
+    /> -->
 
-    <mnemonic-password-modal
+    <!-- <mnemonic-password-modal
       ref="mnemonicPhrasePassword"
       :hardware-wallet-open="toggleNetworkAddrModal"
       :phrase="phrase"
-    />
-    <network-and-address-modal
+    /> -->
+    <!-- <network-and-address-modal
       ref="networkAddress"
       :hardware-wallet="hwInstance"
-    />
-    <hardware-password-modal
+    /> -->
+    <!-- <hardware-password-modal
       ref="hardwareModal"
       :wallet-constructor="walletConstructor"
       :hardware-brand="hardwareBrand"
       @hardwareWalletOpen="toggleNetworkAddrModal"
-    />
+    /> -->
     <print-modal
       ref="printModal"
       :priv-key="!wallet"
       :address="account.address"
     />
     <expired-names-modal ref="expiredNames" />
-    <bcvault-address-modal
+    <!-- <bcvault-address-modal
       ref="bcvault"
       :addresses="bcVaultWallets"
       :callback-fn="bcVaultCb"
-    />
+    /> -->
     <address-qrcode-modal ref="addressQrcodeModal" :address="account.address" />
     <!-- Modals ******************************************************** -->
     <!-- Modals ******************************************************** -->
@@ -113,9 +113,9 @@
               :received-tokens="receivedTokens"
               :reset-token-selection="setTokensWithBalance"
             />
-            <token-overview
+            <!-- <token-overview
               v-if="$route.fullPath === '/interface/dapps/aave/action'"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -126,15 +126,15 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import ENS from 'ethereum-ens';
-import TokenOverview from '@/dapps/Aave/components/TokenOverview';
+// import TokenOverview from '@/dapps/Aave/components/TokenOverview';
 import WalletPasswordModal from '@/components/WalletPasswordModal';
 import EnterPinNumberModal from '@/components/EnterPinNumberModal';
-import NetworkAndAddressModal from '@/layouts/AccessWalletLayout/components/NetworkAndAddressModal';
-import BcVaultAddressModal from '@/layouts/AccessWalletLayout/components/BcVaultAddressModal';
-import HardwarePasswordModal from '@/layouts/AccessWalletLayout/components/HardwarePasswordModal';
-import MnemonicPasswordModal from '@/layouts/AccessWalletLayout/components/MnemonicPasswordModal';
-import MnemonicModal from '@/layouts/AccessWalletLayout/components/MnemonicModal';
-import LedgerAppModal from '@/layouts/AccessWalletLayout/components/LedgerAppModal';
+// import NetworkAndAddressModal from '@/layouts/AccessWalletLayout/components/NetworkAndAddressModal';
+// import BcVaultAddressModal from '@/layouts/AccessWalletLayout/components/BcVaultAddressModal';
+// import HardwarePasswordModal from '@/layouts/AccessWalletLayout/components/HardwarePasswordModal';
+// import MnemonicPasswordModal from '@/layouts/AccessWalletLayout/components/MnemonicPasswordModal';
+// import MnemonicModal from '@/layouts/AccessWalletLayout/components/MnemonicModal';
+// import LedgerAppModal from '@/layouts/AccessWalletLayout/components/LedgerAppModal';
 import InterfaceAddress from './components/InterfaceAddress';
 import InterfaceBalance from './components/InterfaceBalance';
 import InterfaceNetwork from './components/InterfaceNetwork';
@@ -157,25 +157,25 @@ import AddressQrcodeModal from '@/components/AddressQrcodeModal';
 import web3Utils from 'web3-utils';
 import { isAddress } from '@/helpers/addressUtils';
 import { ETH } from '@/networks/types';
-import {
-  LedgerWallet,
-  TrezorWallet,
-  BitBoxWallet,
-  BitBox02Wallet,
-  SecalotWallet,
-  KeepkeyWallet,
-  BCVaultWallet
-} from '@/wallets';
+// import {
+//   LedgerWallet,
+//   TrezorWallet,
+//   BitBoxWallet,
+//   BitBox02Wallet,
+//   SecalotWallet,
+//   KeepkeyWallet,
+//   BCVaultWallet
+// } from '@/wallets';
 import {
   WEB3_WALLET as WEB3_TYPE,
-  LEDGER as LEDGER_TYPE,
-  TREZOR as TREZOR_TYPE,
-  BITBOX as BITBOX_TYPE,
-  BITBOX02 as BITBOX02_TYPE,
-  SECALOT as SECALOT_TYPE,
-  KEEPKEY as KEEPKEY_TYPE,
-  MNEMONIC as MNEMONIC_TYPE,
-  BCVAULT as BC_VAULT
+  // LEDGER as LEDGER_TYPE,
+  // TREZOR as TREZOR_TYPE,
+  // BITBOX as BITBOX_TYPE,
+  // BITBOX02 as BITBOX02_TYPE,
+  // SECALOT as SECALOT_TYPE,
+  // KEEPKEY as KEEPKEY_TYPE,
+  MNEMONIC as MNEMONIC_TYPE
+  // BCVAULT as BC_VAULT
 } from '@/wallets/bip44/walletTypes';
 
 import ExpiryAbi from './expiryAbi.js';
@@ -186,7 +186,7 @@ const EXPIRY_CHECK_CONTRACT = '0x78e21d038fcbb6d56f825dc1e8d8acd965744adb';
 export default {
   name: 'Interface',
   components: {
-    'bcvault-address-modal': BcVaultAddressModal,
+    // 'bcvault-address-modal': BcVaultAddressModal,
     'interface-side-menu': InterfaceSideMenu,
     'interface-address': InterfaceAddress,
     'interface-balance': InterfaceBalance,
@@ -194,17 +194,17 @@ export default {
     'interface-tokens': InterfaceTokens,
     'wallet-password-modal': WalletPasswordModal,
     'print-modal': PrintModal,
-    'network-and-address-modal': NetworkAndAddressModal,
-    'hardware-password-modal': HardwarePasswordModal,
-    'mnemonic-modal': MnemonicModal,
-    'mnemonic-password-modal': MnemonicPasswordModal,
+    // 'network-and-address-modal': NetworkAndAddressModal,
+    // 'hardware-password-modal': HardwarePasswordModal,
+    // 'mnemonic-modal': MnemonicModal,
+    // 'mnemonic-password-modal': MnemonicPasswordModal,
     'enter-pin-number-modal': EnterPinNumberModal,
     'mobile-interface-address': MobileInterfaceAddress,
     'mobile-interface-balance': MobileInterfaceBalance,
     'mobile-interface-network': MobileInterfaceNetwork,
     'address-qrcode-modal': AddressQrcodeModal,
-    'ledger-app-modal': LedgerAppModal,
-    'token-overview': TokenOverview,
+    // 'ledger-app-modal': LedgerAppModal,
+    // 'token-overview': TokenOverview,
     'expired-names-modal': ExpiredNamesModal
   },
   data() {
@@ -222,13 +222,13 @@ export default {
         show: false,
         msg: ''
       },
-      hws: {
-        ledger: LedgerWallet,
-        trezor: TrezorWallet,
-        bitbox: BitBoxWallet,
-        secalot: SecalotWallet
-      },
-      hwInstance: {},
+      // hws: {
+      //   ledger: LedgerWallet,
+      //   trezor: TrezorWallet,
+      //   bitbox: BitBoxWallet,
+      //   secalot: SecalotWallet
+      // },
+      // hwInstance: {},
       walletConstructor: () => {},
       hardwareBrand: '',
       phrase: '',
@@ -342,84 +342,84 @@ export default {
       this.$refs.mnemonicPhraseModal.$refs.mnemonicPhrase.hide();
       this.$refs.mnemonicPhrasePassword.$refs.password.show();
     },
-    toggleNetworkAddrModal(walletInstance) {
-      this.$refs.hardwareModal.$refs.password.hide();
-      this.$refs.mnemonicPhrasePassword.$refs.password.hide();
-      this.hwInstance = walletInstance;
-      this.$refs.networkAddress.$refs.networkAndAddress.show();
-    },
+    // toggleNetworkAddrModal(walletInstance) {
+    //   this.$refs.hardwareModal.$refs.password.hide();
+    //   this.$refs.mnemonicPhrasePassword.$refs.password.hide();
+    //   this.hwInstance = walletInstance;
+    //   this.$refs.networkAddress.$refs.networkAndAddress.show();
+    // },
     togglePasswordModal(construct, brand) {
       this.walletConstructor = construct;
       this.hardwareBrand = brand;
       this.$refs.hardwareModal.$refs.password.show();
     },
-    ledgerAppModalOpen() {
-      this.$refs.ledgerAppModal.$refs.ledgerApp.show();
-    },
+    // ledgerAppModalOpen() {
+    //   this.$refs.ledgerAppModal.$refs.ledgerApp.show();
+    // },
     switchAddress() {
       switch (this.account.identifier) {
-        case LEDGER_TYPE:
-          this.ledgerAppModalOpen();
-          break;
-        case TREZOR_TYPE:
-          TrezorWallet()
-            .then(_newWallet => {
-              this.toggleNetworkAddrModal(_newWallet);
-            })
-            .catch(TrezorWallet.errorHandler);
-          break;
-        case BITBOX_TYPE:
-          this.togglePasswordModal(BitBoxWallet, 'BitBox');
-          break;
-        case BITBOX02_TYPE:
-          // eslint-disable-next-line no-case-declarations
-          let bb02;
-          BitBox02Wallet()
-            .then(_newWallet => {
-              bb02 = _newWallet;
-              this.$emit('bitbox02Open', bb02);
-              bb02
-                .init('')
-                .then(() => {
-                  this.toggleNetworkAddrModal(bb02);
-                })
-                .catch(e => {
-                  BitBox02Wallet.errorHandler(e);
-                });
-            })
-            .catch(e => {
-              BitBox02Wallet.errorHandler(e);
-            });
-          break;
-        case SECALOT_TYPE:
-          this.togglePasswordModal(SecalotWallet, 'Secalot');
-          break;
+        // case LEDGER_TYPE:
+        //   this.ledgerAppModalOpen();
+        //   break;
+        // case TREZOR_TYPE:
+        //   TrezorWallet()
+        //     .then(_newWallet => {
+        //       this.toggleNetworkAddrModal(_newWallet);
+        //     })
+        //     .catch(TrezorWallet.errorHandler);
+        //   break;
+        // case BITBOX_TYPE:
+        //   this.togglePasswordModal(BitBoxWallet, 'BitBox');
+        //   break;
+        // case BITBOX02_TYPE:
+        //   // eslint-disable-next-line no-case-declarations
+        //   let bb02;
+        //   BitBox02Wallet()
+        //     .then(_newWallet => {
+        //       bb02 = _newWallet;
+        //       this.$emit('bitbox02Open', bb02);
+        //       bb02
+        //         .init('')
+        //         .then(() => {
+        //           this.toggleNetworkAddrModal(bb02);
+        //         })
+        //         .catch(e => {
+        //           BitBox02Wallet.errorHandler(e);
+        //         });
+        //     })
+        //     .catch(e => {
+        //       BitBox02Wallet.errorHandler(e);
+        //     });
+        //   break;
+        // case SECALOT_TYPE:
+        //   this.togglePasswordModal(SecalotWallet, 'Secalot');
+        //   break;
         case MNEMONIC_TYPE:
           this.$refs.mnemonicPhraseModal.$refs.mnemonicPhrase.show();
           break;
-        case KEEPKEY_TYPE:
-          KeepkeyWallet(false, this.$eventHub)
-            .then(_newWallet => {
-              this.toggleNetworkAddrModal(_newWallet);
-            })
-            .catch(KeepkeyWallet.errorHandler);
-          break;
-        case BC_VAULT:
-          // eslint-disable-next-line
-          const BCVaultWalletInstance = BCVaultWallet();
-          BCVaultWalletInstance.init()
-            .then(res => {
-              if (res.length > 1) {
-                this.bcVaultWallets = res;
-                this.$refs.bcvault.$refs.bcvaultAddress.show();
-              } else {
-                BCVaultWallet.erroHandler({ jsError: 'mew1' });
-              }
-            })
-            .catch(e => {
-              BCVaultWallet.errorHandler(e);
-            });
-          break;
+        // case KEEPKEY_TYPE:
+        //   KeepkeyWallet(false, this.$eventHub)
+        //     .then(_newWallet => {
+        //       this.toggleNetworkAddrModal(_newWallet);
+        //     })
+        //     .catch(KeepkeyWallet.errorHandler);
+        //   break;
+        // case BC_VAULT:
+        //   // eslint-disable-next-line
+        //   const BCVaultWalletInstance = BCVaultWallet();
+        //   BCVaultWalletInstance.init()
+        //     .then(res => {
+        //       if (res.length > 1) {
+        //         this.bcVaultWallets = res;
+        //         this.$refs.bcvault.$refs.bcvaultAddress.show();
+        //       } else {
+        //         BCVaultWallet.erroHandler({ jsError: 'mew1' });
+        //       }
+        //     })
+        //     .catch(e => {
+        //       BCVaultWallet.errorHandler(e);
+        //     });
+        //   break;
         default:
           Toast.responseHandler(
             new Error(
@@ -429,13 +429,13 @@ export default {
           );
       }
     },
-    bcVaultCb(address) {
-      const BCVaultWalletInstance = BCVaultWallet();
-      const walletInstance = BCVaultWalletInstance.getAccount(address);
-      this.decryptWallet([walletInstance]).then(() => {
-        this.$refs.bcvault.$refs.bcvaultAddress.hide();
-      });
-    },
+    // bcVaultCb(address) {
+    //   const BCVaultWalletInstance = BCVaultWallet();
+    //   const walletInstance = BCVaultWalletInstance.getAccount(address);
+    //   this.decryptWallet([walletInstance]).then(() => {
+    //     this.$refs.bcvault.$refs.bcvaultAddress.hide();
+    //   });
+    // },
     print() {
       this.$refs.printModal.$refs.print.show();
     },
